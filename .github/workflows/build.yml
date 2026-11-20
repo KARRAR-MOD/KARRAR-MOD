@@ -1,6 +1,4 @@
-YAML
-
-name: Build KARRAR MOD APK
+name: Build KARRAR MOD APk
 
 on:
   workflow_dispatch:
