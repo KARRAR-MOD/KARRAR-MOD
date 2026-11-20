@@ -1,31 +1,28 @@
-name: Build KARRAR MOD APk
 
-on:
+name: Build KARRAR MOD APK
+
+'on':
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: Extract project
         run: |
           mkdir project
           unzip -q "KARRAR_MOD_Android_Project_v2(1).zip" -d project
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.9'
 
       - name: Build APK
         working-directory: project
@@ -36,4 +33,38 @@ jobs:
         with:
           name: KARRAR-MOD-APK
           path: project/app/build/outputs/apk/debug/app-debug.apk
+
+
+
+
+
+
+    
+
+    
+      
+        
+
+      
+      
+          
+          
+
+      
+      
+      
+      
+          
+
+      
+        
+          
+
+      
+
+        
+
+      
+          
+          
 
